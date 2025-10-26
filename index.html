@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Your Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top-header">
+    <!-- TLT Logo -->
+    <div class="logo">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='12' fill='%232B414F'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='10' font-weight='bold' text-anchor='middle' dominant-baseline='middle'%3ETLT%3C/text%3E%3C/svg%3E" alt="The Leadership Thread Logo" />
+      <span>The Leadership Thread</span>
+    </div>
+    <!-- User Info -->
+    <div class="user-dropdown">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='12' fill='%23C6B98B'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='8' text-anchor='middle' dominant-baseline='middle'%3EJD%3C/text%3E%3C/svg%3E" alt="User Avatar" />
+      <span>Dr. John Doe</span>
+      <svg width="12" height="12" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M7 10l5 5 5-5z"/>
+      </svg>
+    </div>
+  </header>
+
+  <main class="form-container">
+    <h1 class="page-title">Create Your Profile</h1>
+
+    <!-- Your Name Section -->
+    <section class="form-section">
+      <h2 class="section-title">Your Name</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <input type="text" id="first-name" placeholder="First Name" />
+        </div>
+        <div class="form-group">
+          <input type="text" id="last-name" placeholder="Last Name" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Details Section -->
+    <section class="form-section">
+      <h2 class="section-title">Contact Details</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <input type="email" id="email" placeholder="Email" />
+        </div>
+        <div class="form-group">
+          <input type="tel" id="mobile" placeholder="Mobile No" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Select Primary Role Section -->
+    <section class="form-section">
+      <h2 class="section-title">Select Primary Role:</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="role">Role</label>
+          <div class="custom-select" id="role-select">
+            <div class="select-selected">Select role</div>
+            <div class="select-items">
+              <div class="select-group">Specialist</div>
+              <div class="select-option">Specialist (Partner)</div>
+              <div class="select-option">Specialist (Owner)</div>
+              <div class="select-option">Specialist (Associate)</div>
+              <div class="select-group">Others</div>
+              <div class="select-option">Hygienist</div>
+              <div class="select-option">Practice Success Director</div>
+              <div class="select-option">Strategic Growth Partner</div>
+              <div class="select-option">Treatment Consultant</div>
+              <div class="select-option">Custom Role</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="specialty">Specialty Type</label>
+          <div class="custom-select" id="specialty-select">
+            <div class="select-selected">Select specialty</div>
+            <div class="select-items">
+              <div class="select-option">Periodontist</div>
+              <div class="select-option">Endodontist</div>
+              <div class="select-option">Oral Surgeon</div>
+              <div class="select-option">Prosthodontist</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="checkbox-group">
+        <label for="producer-checkbox" class="checkbox-label">
+          <input type="checkbox" id="producer-checkbox" />
+          Is this user a producer?
+        </label>
+      </div>
+    </section>
+
+    <!-- Select Location Section -->
+    <section class="form-section">
+      <h2 class="section-title">Select Location</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <div class="custom-select" id="country-select">
+            <div class="select-selected">Select</div>
+            <div class="select-items">
+              <div class="select-option">United States</div>
+              <div class="select-option">Canada</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="custom-select" id="city-select">
+            <div class="select-selected">Select</div>
+            <div class="select-items">
+              <div class="select-option">New York</div>
+              <div class="select-option">Los Angeles</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buttons -->
+    <div class="button-group">
+      <button type="button" class="btn-cancel">Cancel</button>
+      <button type="submit" class="btn-submit">Submit</button>
+    </div>
+  </main>
+
+  <script>
+    // Custom dropdown functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const selects = document.querySelectorAll('.custom-select');
+      
+      selects.forEach(select => {
+        const selected = select.querySelector('.select-selected');
+        const items = select.querySelector('.select-items');
+        
+        selected.addEventListener('click', function() {
+          // Close all other dropdowns
+          document.querySelectorAll('.custom-select .select-items').forEach(item => {
+            if (item !== items) item.style.display = 'none';
+          });
+          
+          // Toggle current dropdown
+          items.style.display = items.style.display === 'block' ? 'none' : 'block';
+        });
+        
+        items.querySelectorAll('.select-option').forEach(option => {
+          option.addEventListener('click', function() {
+            selected.textContent = this.textContent;
+            items.style.display = 'none';
+          });
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+          if (!select.contains(e.target)) {
+            items.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
